@@ -24,22 +24,10 @@ RUN     cd $JBOSS_HOME && unzip -o $LIB_PATH/jackson.zip &&\
         /bin/sh -c '$JBOSS_HOME/bin/standalone.sh &' && \
         sleep 10 && \
         $JBOSS_HOME/bin/jboss-cli.sh -c --command="deploy $LIB_PATH/$POSTGRES_JDBC" &&\
-        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=VarejoDS --jndi-name=java:jboss/VarejoDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=2 --max-poo
-l-size=10 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=${DB_N
-AME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensio
-ns.postgres.PostgreSQLExceptionSorter" &&\
-        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=UniversiaDS --jndi-name=java:jboss/UniversiaDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=2 --m
-ax-pool-size=60 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=
-${DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.ex
-tensions.postgres.PostgreSQLExceptionSorter" &&\
-        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=UniessaEnemDS --jndi-name=java:jboss/UniessaEnemDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=2
- --max-pool-size=4 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseNa
-me=${DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc
-.extensions.postgres.PostgreSQLExceptionSorter" &&\
-        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=BaseNoviDS --jndi-name=java:jboss/BaseNoviDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=5 --max
--pool-size=10 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=${
-DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.exte
-nsions.postgres.PostgreSQLExceptionSorter" &&\
+        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=VarejoDS --jndi-name=java:jboss/VarejoDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=2 --max-pool-size=10 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=${DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensins.postgres.PostgreSQLExceptionSorter" &&\
+        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=UniversiaDS --jndi-name=java:jboss/UniversiaDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=2 --max-pool-size=60 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=${DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter" &&\
+        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=UniessaEnemDS --jndi-name=java:jboss/UniessaEnemDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=2 --max-pool-size=4 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=${DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter" &&\
+        $JBOSS_HOME/bin/jboss-cli.sh -c --command="xa-data-source add --name=BaseNoviDS --jndi-name=java:jboss/BaseNoviDS --user-name=${DB_USER} --password=${DB_PASS} --min-pool-size=5 --max-pool-size=10 --driver-name=postgresql-42.2.13.jar --xa-datasource-class=org.postgresql.xa.PGXADataSource --xa-datasource-properties=ServerName=\"${DB_HOST}\",PortNumber=5432,DatabaseName=${DB_NAME} --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter" &&\
         rm -rf $JBOSS_HOME/standalone/configuration/standalone_xml_history/ $JBOSS_HOME/standalone/log/*
 
 # Deploy enem.war
