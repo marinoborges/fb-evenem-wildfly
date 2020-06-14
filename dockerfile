@@ -12,12 +12,14 @@ ARG LIB_PATH=/opt/lib/
 
 USER root
 
+WORKDIR $JBOSS_HOME
+
 # Deploy postgres jdbc, jackson and datasources
 ADD $POSTGRES_JDBC $LIB_PATH
 ADD jackson.zip $LIB_PATH
 
 RUN	cd $JBOSS_HOME && unzip -o $LIB_PATH/jackson.zip &&\
-	sed -i "s/Xmx512m/Xmx${JVM_XMX}/" $JBOSS_HOME/bin/standalone.conf &&\
+	sed -i "s/Xmx[0-9]*[a-zA-Z]/Xmx${JVM_XMX}/" $JBOSS_HOME/bin/standalone.conf &&\
 	/bin/sh -c '$JBOSS_HOME/bin/standalone.sh &' && \
 	sleep 10 && \
 	$JBOSS_HOME/bin/jboss-cli.sh -c --command="deploy $LIB_PATH/$POSTGRES_JDBC" &&\
